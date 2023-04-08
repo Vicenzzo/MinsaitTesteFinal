@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.dto.ClienteDTO;
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
+import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
+import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
 import com.minsait.financas.testefinalfinancas.service.MensagemDeSucesso;
 
 @RestController
@@ -30,12 +32,13 @@ public class ClienteController {
 	@Autowired
 	public ClienteController(ClienteService clienteService) {
 		this.clienteService = clienteService;
+		
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente cadastrarCliente(@Valid @RequestBody Cliente cliente) {
-		Cliente clienteSalvo = this.clienteService.cadastrarLivro(cliente);
+		Cliente clienteSalvo = this.clienteService.cadastrarCliente(cliente);
 		return clienteSalvo;
 	}
 	@GetMapping
@@ -59,7 +62,7 @@ public class ClienteController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{cpf}")
 	public MensagemDeSucesso deletarLivro(@PathVariable Long cpf) throws ClienteNaoEncontradoException {
-		return this.clienteService.deletarLivro(cpf);
+		return this.clienteService.deletarCliente(cpf);
 	}
 	
 }

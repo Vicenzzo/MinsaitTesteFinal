@@ -20,7 +20,7 @@ public class ClienteService {
 		this.clienteRepository = clienteRepository;
 	}
 	
-	public Cliente cadastrarLivro(Cliente cliente) {
+	public Cliente cadastrarCliente(Cliente cliente) {
 		Cliente clienteRetorno = this.clienteRepository.save(cliente);
 		return clienteRetorno;
 	}
@@ -43,7 +43,7 @@ public class ClienteService {
 			
 			cliente.setCPF(cpf);
 			
-			// colocar isso em um método e reusar 						
+								
 			if (cliente.getCEP() == null) {
 				cliente.setCEP(LivroASerAlterado.getCEP());
 			}
@@ -72,7 +72,7 @@ public class ClienteService {
 		throw new ClienteNaoEncontradoException(cpf);
 	}
 
-	public MensagemDeSucesso deletarLivro(Long cpf) throws ClienteNaoEncontradoException {
+	public MensagemDeSucesso deletarCliente(Long cpf) throws ClienteNaoEncontradoException {
 		
 		if (this.clienteRepository.existsById(cpf)) {
 			this.clienteRepository.deleteById(cpf);

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 
-public class Cliente {
+public class Cliente{
 	
 	@Id
 	
@@ -44,7 +44,10 @@ public class Cliente {
 		this.numeroDaResidencia = numeroDaResidencia;
 		this.rendimentoMensal = rendimentoMensal;
 	}
-
+	
+	public Cliente (Long cpf) {
+		this.cpf = cpf;
+	}
 	
 	public String getNome() {
 		return nome;
