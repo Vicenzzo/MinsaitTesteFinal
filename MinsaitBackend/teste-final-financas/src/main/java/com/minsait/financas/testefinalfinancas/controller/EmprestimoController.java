@@ -37,7 +37,7 @@ public class EmprestimoController{
 	public EmprestimoController(ClienteService clienteService, EmprestimoService emprestimoService) {
 		this.clienteService = clienteService;
 		this.emprestimoService = emprestimoService;
-	}
+	}  
 	
 	
 	@PostMapping("/{cpf}/emprestimos")
@@ -47,9 +47,9 @@ public class EmprestimoController{
 		return empretimoSalvo;
 	}
 	@GetMapping("/{cpf}/emprestimos")
-	public Emprestimo EmprestimoretornarTodosOsCliente(@PathVariable Long cpf,  @Valid Emprestimo empresimo, Cliente cliente, @PathVariable Long id) throws ClienteNaoEncontradoException{
+	public List<Emprestimo> EmprestimoretornarTodosOsCliente(@PathVariable Long cpf,  @Valid Emprestimo empresimo, Cliente cliente) throws ClienteNaoEncontradoException{
 	
-		Emprestimo emprestimo = this.emprestimoService.retornarTodosOsCliente(cpf, empresimo, cliente, id);
+		List<Emprestimo> emprestimo = this.emprestimoService.retornarTodosOsCliente(cpf, empresimo, cliente);
 		return emprestimo;
 	}
 }

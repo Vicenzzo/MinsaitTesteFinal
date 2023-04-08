@@ -43,10 +43,18 @@ private final ClienteRepository clienteRepository;
 
 
 
-	public Emprestimo retornarTodosOsCliente(Long cpf, @Valid Emprestimo empresimo, Cliente cliente, Long id) throws ClienteNaoEncontradoException {
-		if(empresimo.getCPFCliente() == cliente.getCPF()) {
-			return this.emprestimoRepository.findById(id).get();
+	public List<Emprestimo> retornarTodosOsCliente(Long cpf, @Valid Emprestimo emprestimo, Cliente cliente) throws ClienteNaoEncontradoException {
+		
+		if (this.clienteRepository.existsById(cpf)) {
+			Cliente LivroASerAlterado = this.clienteRepository.findById(cpf).get();
+			
+			emprestimo.setCPFCliente(cpf);
+			if(emprestimo.getCPFCliente() != null) {
+				return this.emprestimoRepository.findByCPFCliente(cpf);
+			}
 		}
+		
+		
 		throw new ClienteNaoEncontradoException(cpf);
 	}
 
