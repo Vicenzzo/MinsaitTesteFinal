@@ -1,5 +1,6 @@
 package com.minsait.financas.testefinalfinancas.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
+import com.minsait.financas.testefinalfinancas.enums.RelacionamentoE;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
 import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
@@ -58,10 +60,5 @@ public class EmprestimoController{
 	public MensagemDeSucesso deletarEmprestimoPorId(@PathVariable Long id, @PathVariable Long cpf) throws ClienteNaoEncontradoException {
 		return this.emprestimoService.deletarEmprestimo(id, cpf);
 	}
-	
-	
-	
-	
-	
 	
 }

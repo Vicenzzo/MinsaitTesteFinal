@@ -1,5 +1,6 @@
 package com.minsait.financas.testefinalfinancas.service;
 
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
+import com.minsait.financas.testefinalfinancas.enums.RelacionamentoE;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.repository.ClienteRepository;
 import com.minsait.financas.testefinalfinancas.repository.EmprestimoRepository;
@@ -34,6 +36,9 @@ private final ClienteRepository clienteRepository;
 	public Emprestimo cadastrarEmprestimo(Emprestimo emprestimo, Long cpf) throws ClienteNaoEncontradoException{
 		if (this.clienteRepository.existsById(cpf)) {
 			emprestimo.setCPFCliente(cpf);
+		}
+		if(emprestimo.getRelacionamento().contains("Bronze")) {
+			emprestimo.setValorFinal(this.calcula(emprestimo, RelacionamentoE.BRONZE));
 		}
 		return this.emprestimoRepository.save(emprestimo);
 	}
@@ -81,7 +86,9 @@ private final ClienteRepository clienteRepository;
 		
 		throw new ClienteNaoEncontradoException(cpf);
 	}
-	
+	BigDecimal calcula(Emprestimo emprestimo,  RelacionamentoE imposto) {
+        return imposto.calcula(emprestimo);
+   }
 
 
 }
