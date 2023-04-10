@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.dto.ClienteDTO;
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
-import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
-import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
 import com.minsait.financas.testefinalfinancas.service.MensagemDeSucesso;
 
 @RestController

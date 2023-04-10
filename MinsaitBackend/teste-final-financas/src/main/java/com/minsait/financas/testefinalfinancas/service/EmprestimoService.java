@@ -33,29 +33,55 @@ private final ClienteRepository clienteRepository;
 	
 	public Emprestimo cadastrarEmprestimo(Emprestimo emprestimo, Long cpf) throws ClienteNaoEncontradoException{
 		if (this.clienteRepository.existsById(cpf)) {
-			Cliente LivroASerAlterado = this.clienteRepository.findById(cpf).get();
-			
 			emprestimo.setCPFCliente(cpf);
-
 		}
 		return this.emprestimoRepository.save(emprestimo);
 	}
 
 
 
-	public List<Emprestimo> retornarTodosOsCliente(Long cpf, @Valid Emprestimo emprestimo, Cliente cliente) throws ClienteNaoEncontradoException {
+	public List<Emprestimo> retornarTodosOsCliente(Long cpf) throws ClienteNaoEncontradoException {
 		
 		if (this.clienteRepository.existsById(cpf)) {
-			Cliente LivroASerAlterado = this.clienteRepository.findById(cpf).get();
-			
-			emprestimo.setCPFCliente(cpf);
-			if(emprestimo.getCPFCliente() != null) {
-				return this.emprestimoRepository.findByCPFCliente(cpf);
+		
+				return this.emprestimoRepository.findAllByCPFCliente(cpf);
 			}
-		}
+		
 		
 		
 		throw new ClienteNaoEncontradoException(cpf);
 	}
+
+	public Emprestimo retornarEmprestimoPorId(Long cpf, Long id) throws ClienteNaoEncontradoException{
+		
+		if (this.clienteRepository.existsById(cpf)) {
+			if (this.emprestimoRepository.existsById(id)) {
+				Emprestimo emprestimo = this.emprestimoRepository.getReferenceById(id);
+				if (emprestimo.getCPFCliente().equals(cpf)) {
+					return emprestimo;
+				}
+				
+			}
+			
+		}
+		throw new ClienteNaoEncontradoException(cpf);
+	}
+
+	public MensagemDeSucesso deletarEmprestimo(Long id, Long cpf) throws ClienteNaoEncontradoException{
+		if (this.clienteRepository.existsById(cpf)) {
+			if (this.emprestimoRepository.existsById(id)) {
+				this.emprestimoRepository.deleteById(id);
+				MensagemDeSucesso mensagem = new MensagemDeSucesso();
+				mensagem.setMensagem("Deletado com sucesso");
+				return mensagem;
+			}
+			
+			
+		} 
+		
+		throw new ClienteNaoEncontradoException(cpf);
+	}
+	
+
 
 }
