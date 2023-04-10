@@ -18,7 +18,8 @@ public class Emprestimo{
 	private BigDecimal valorIncial;
 	private BigDecimal valorFinal;
 	private String relacionamento;
-	
+	private Integer dataInicial;
+	private Integer dataFinal;
 	
 	
 	
@@ -26,11 +27,13 @@ public class Emprestimo{
 		
 	}
 
-	public Emprestimo(BigDecimal valorIncial, BigDecimal valorFinal, String relacionamento,Long CPFCliente) {
+	public Emprestimo(BigDecimal valorIncial, BigDecimal valorFinal, String relacionamento,Long CPFCliente, Integer dataInicial, Integer dataFinal) {
 		this.valorIncial = valorIncial;
 		this.valorFinal = valorFinal;
 		this.relacionamento = relacionamento;
 		this.CPFCliente = CPFCliente;
+		this.dataInicial = dataInicial;
+		this.dataFinal = dataFinal;
 	}
 
 	public Long getId() {
@@ -68,5 +71,17 @@ public class Emprestimo{
 	}
 	public void setCPFCliente(Long clienteRetorno) {
 		this.CPFCliente = clienteRetorno;
+	}
+	public Integer getDataInicial() {
+		return dataInicial;
+	}
+	public void setDataInicial(Integer dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+	public Integer getDataFinal() {
+		return dataFinal;
+	}
+	public void setDataFinal(Integer dataFinal) {
+		this.dataFinal = dataFinal;
 	}
 }
