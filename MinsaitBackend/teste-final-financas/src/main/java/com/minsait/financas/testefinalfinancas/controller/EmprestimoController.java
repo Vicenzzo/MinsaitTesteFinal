@@ -1,6 +1,5 @@
 package com.minsait.financas.testefinalfinancas.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
-import com.minsait.financas.testefinalfinancas.enums.RelacionamentoE;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
+import com.minsait.financas.testefinalfinancas.exception.EmprestimoNaoCadastradoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
 import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
 import com.minsait.financas.testefinalfinancas.service.MensagemDeSucesso;
@@ -40,14 +39,14 @@ public class EmprestimoController{
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Emprestimo cadastrarEmprestimoCliente(@PathVariable Long cpf, @Valid @RequestBody Emprestimo empresimo) throws ClienteNaoEncontradoException {
+	public Emprestimo cadastrarEmprestimoCliente(@PathVariable Long cpf, @Valid @RequestBody Emprestimo empresimo) throws ClienteNaoEncontradoException, EmprestimoNaoCadastradoException {
 		Emprestimo empretimoSalvo = this.emprestimoService.cadastrarEmprestimo(empresimo, cpf);
 		return empretimoSalvo;
 	}
 	@GetMapping
-	public List<Emprestimo> EmprestimoretornarTodosOsCliente(@PathVariable Long cpf) throws ClienteNaoEncontradoException{
+	public List<Emprestimo> retornarTodosOsEmprestimosPorCliente(@PathVariable Long cpf) throws ClienteNaoEncontradoException{
 	
-		List<Emprestimo> emprestimo = this.emprestimoService.retornarTodosOsCliente(cpf);
+		List<Emprestimo> emprestimo = this.emprestimoService.retornarTodosOsEmprestimosPorCliente(cpf);
 		return emprestimo;
 	}
 	@GetMapping("/{id}")

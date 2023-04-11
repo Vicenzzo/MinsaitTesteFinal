@@ -1,21 +1,12 @@
 package com.minsait.financas.testefinalfinancas.service;
 
-import java.math.BigDecimal;
-import java.util.Iterator;
+
 import java.util.List;
-
-import javax.validation.Valid;
-
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import com.minsait.financas.testefinalfinancas.entity.Cliente;
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
-import com.minsait.financas.testefinalfinancas.enums.RelacionamentoE;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
+import com.minsait.financas.testefinalfinancas.exception.EmprestimoNaoCadastradoException;
 import com.minsait.financas.testefinalfinancas.repository.ClienteRepository;
 import com.minsait.financas.testefinalfinancas.repository.EmprestimoRepository;
 @Service
@@ -25,7 +16,7 @@ public class EmprestimoService {
 private final EmprestimoRepository emprestimoRepository;
 
 private final ClienteRepository clienteRepository;
-
+Integer valorTotalEmprestimo;
 	@Autowired
 	public EmprestimoService(EmprestimoRepository emprestimoRepository, ClienteRepository clienteRepository) {
 		this.emprestimoRepository = emprestimoRepository;
@@ -33,19 +24,26 @@ private final ClienteRepository clienteRepository;
 		
 	}
 	
-	public Emprestimo cadastrarEmprestimo(Emprestimo emprestimo, Long cpf) throws ClienteNaoEncontradoException{
+	public Emprestimo cadastrarEmprestimo(Emprestimo emprestimo, Long cpf) throws ClienteNaoEncontradoException, EmprestimoNaoCadastradoException{
+		
 		if (this.clienteRepository.existsById(cpf)) {
-			emprestimo.setCPFCliente(cpf);
+			
+			if(this.clientePodeSolicitarEmprestimo(cpf, emprestimo.getValorIncial().doubleValue())) {
+			emprestimo.setValorFinal(emprestimo.getRelacionamento().calcula(emprestimo, this.retornarTodosOsEmprestimosPorCliente(cpf).size()));
+				
+				return this.emprestimoRepository.save(emprestimo);
+			}
+			throw new EmprestimoNaoCadastradoException();
+				
 		}
-		if(emprestimo.getRelacionamento().contains("Bronze")) {
-			emprestimo.setValorFinal(this.calcula(emprestimo, RelacionamentoE.BRONZE));
-		}
-		return this.emprestimoRepository.save(emprestimo);
+		throw new ClienteNaoEncontradoException(cpf);
+					
+		
 	}
 
 
 
-	public List<Emprestimo> retornarTodosOsCliente(Long cpf) throws ClienteNaoEncontradoException {
+	public List<Emprestimo> retornarTodosOsEmprestimosPorCliente(Long cpf) throws ClienteNaoEncontradoException {
 		
 		if (this.clienteRepository.existsById(cpf)) {
 		
@@ -86,9 +84,20 @@ private final ClienteRepository clienteRepository;
 		
 		throw new ClienteNaoEncontradoException(cpf);
 	}
-	BigDecimal calcula(Emprestimo emprestimo,  RelacionamentoE imposto) {
-        return imposto.calcula(emprestimo);
-   }
+	
+	
+	public boolean clientePodeSolicitarEmprestimo(Long cpf, Double valor) throws ClienteNaoEncontradoException {
+		Double valorLimite = this.clienteRepository.getReferenceById(cpf).getRendimentoMensal().doubleValue() * 10;
+		Double valorEmprestimo = valor;
+		for (Emprestimo emprestimoAux : this.retornarTodosOsEmprestimosPorCliente(cpf)) {
+			valorEmprestimo += emprestimoAux.getValorIncial().doubleValue();
+		}
+		if (valorEmprestimo <= valorLimite) {
+				return true;	
+		}
+		return false;
+	}
+	
 
 
 }

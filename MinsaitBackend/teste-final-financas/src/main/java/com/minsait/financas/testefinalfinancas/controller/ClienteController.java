@@ -59,7 +59,7 @@ public class ClienteController {
 	}
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{cpf}")
-	public MensagemDeSucesso deletarLivro(@PathVariable Long cpf) throws ClienteNaoEncontradoException {
+	public MensagemDeSucesso deletarCliente(@PathVariable Long cpf) throws ClienteNaoEncontradoException {
 		return this.clienteService.deletarCliente(cpf);
 	}
 	

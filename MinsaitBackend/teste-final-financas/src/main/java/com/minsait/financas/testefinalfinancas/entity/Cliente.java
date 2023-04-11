@@ -16,29 +16,27 @@ public class Cliente{
 	
 	@NotEmpty(message = "Nome é obrigatório.")
 	private String nome;
-	
-	
-	private String tel;
+	private Integer telefone;
 	private String cep;
 	private String rua;
-	private int numeroDaResidencia;
+	private Integer numeroDaResidencia;
 	private BigDecimal rendimentoMensal;
 
 	public Cliente() {
 		
 	}
 	
-	public Cliente(String nome, String tel, String cep,String rua, int numeroDaResidencia, BigDecimal rendimentoMensal) {
+	public Cliente(String nome, Integer telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
 		this.nome = nome;
-		this.tel = tel;
+		this.telefone = telefone;
 		this.cep = cep;
 		this.rua = rua;
 		this.numeroDaResidencia = numeroDaResidencia;
 		this.rendimentoMensal = rendimentoMensal;
 	}
 
-	public Cliente(String tel, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
-		this.tel = tel;
+	public Cliente(Integer telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
+		this.telefone = telefone;
 		this.cep = cep;
 		this.rua = rua;
 		this.numeroDaResidencia = numeroDaResidencia;
@@ -48,7 +46,6 @@ public class Cliente{
 	public Cliente (Long cpf) {
 		this.cpf = cpf;
 	}
-	
 	public String getNome() {
 		return nome;
 	}
@@ -61,11 +58,11 @@ public class Cliente{
 	public void setCPF(Long cpf) {
 		this.cpf = cpf;
 	}
-	public String getTel() {
-		return tel;
+	public Integer getTelefone() {
+		return telefone;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTelefone(Integer telefone) {
+		this.telefone = telefone;
 	}
 	public String getCEP() {
 		return cep;
@@ -79,10 +76,10 @@ public class Cliente{
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
-	public int getNumeroDaResidencia() {
+	public Integer getNumeroDaResidencia() {
 		return numeroDaResidencia;
 	}
-	public void setNumeroDaResidencia(int numeroDaResidencia) {
+	public void setNumeroDaResidencia(Integer numeroDaResidencia) {
 		this.numeroDaResidencia = numeroDaResidencia;
 	}
 	public BigDecimal getRendimentoMensal() {

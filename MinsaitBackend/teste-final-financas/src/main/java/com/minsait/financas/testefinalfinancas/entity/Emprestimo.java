@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.minsait.financas.testefinalfinancas.enums.RelacionamentoE;
+
 @Entity
 public class Emprestimo{
 	@Id
@@ -17,7 +19,7 @@ public class Emprestimo{
 	private Long CPFCliente;
 	private BigDecimal valorIncial;
 	private BigDecimal valorFinal;
-	private String relacionamento;
+	private RelacionamentoE relacionamento;
 	private Integer dataInicial;
 	private Integer dataFinal;
 	
@@ -27,7 +29,7 @@ public class Emprestimo{
 		
 	}
 
-	public Emprestimo(BigDecimal valorIncial, BigDecimal valorFinal, String relacionamento,Long CPFCliente, Integer dataInicial, Integer dataFinal) {
+	public Emprestimo(BigDecimal valorIncial, BigDecimal valorFinal, RelacionamentoE relacionamento,Long CPFCliente, Integer dataInicial, Integer dataFinal) {
 		this.valorIncial = valorIncial;
 		this.valorFinal = valorFinal;
 		this.relacionamento = relacionamento;
@@ -59,11 +61,11 @@ public class Emprestimo{
 		this.valorFinal = valorFinal;
 	}
 
-	public String getRelacionamento() {
+	public RelacionamentoE getRelacionamento() {
 		return relacionamento;
 	}
 
-	public void setRelacionamento(String relacionamento) {
+	public void setRelacionamento(RelacionamentoE relacionamento) {
 		this.relacionamento = relacionamento;
 	}
 	public Long getCPFCliente() {
@@ -84,4 +86,7 @@ public class Emprestimo{
 	public void setDataFinal(Integer dataFinal) {
 		this.dataFinal = dataFinal;
 	}
+	
+	
+	
 }

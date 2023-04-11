@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
 
 public class ClienteDTO {
-	private String tel;
+	private Integer telefone;
 	private String cep;
 	private String rua;
-	private int numeroDaResidencia;
+	private Integer numeroDaResidencia;
 	private BigDecimal rendimentoMensal;
 	
 	
@@ -16,9 +16,9 @@ public class ClienteDTO {
 		
 	}
 	
-	public ClienteDTO(String tel, String cep, String rua, int numeroDaResidencia, BigDecimal rendimentoMensal) {
+	public ClienteDTO(Integer telefone, String cep, String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
 		super();
-		this.tel = tel;
+		this.telefone = telefone;
 		this.cep = cep;
 		this.rua = rua;
 		this.numeroDaResidencia = numeroDaResidencia;
@@ -26,18 +26,18 @@ public class ClienteDTO {
 	}
 
 	public static ClienteDTO retornarCliente(Cliente cliente) {
-		ClienteDTO clienteDTO = new ClienteDTO(cliente.getTel(), cliente.getCEP(), cliente.getRua(), cliente.getNumeroDaResidencia(), cliente.getRendimentoMensal());
+		ClienteDTO clienteDTO = new ClienteDTO(cliente.getTelefone(), cliente.getCEP(), cliente.getRua(), cliente.getNumeroDaResidencia(), cliente.getRendimentoMensal());
 		return clienteDTO;
 	}
 	public static Cliente retornarCliente(ClienteDTO clienteDTO) {
-		Cliente cliente = new Cliente(clienteDTO.getTel(), clienteDTO.getCep(), clienteDTO.getRua(), clienteDTO.getNumeroDaResidencia(), clienteDTO.getRendimentoMensal());
+		Cliente cliente = new Cliente(clienteDTO.getTelefone(), clienteDTO.getCep(), clienteDTO.getRua(), clienteDTO.getNumeroDaResidencia(), clienteDTO.getRendimentoMensal());
 		return cliente;
 	}
-	public String getTel() {
-		return tel;
+	public Integer getTelefone() {
+		return telefone;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTelefone(Integer telefone) {
+		this.telefone = telefone;
 	}
 	public String getCep() {
 		return cep;
@@ -51,10 +51,10 @@ public class ClienteDTO {
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
-	public int getNumeroDaResidencia() {
+	public Integer getNumeroDaResidencia() {
 		return numeroDaResidencia;
 	}
-	public void setNumeroDaResidencia(int numeroDaResidencia) {
+	public void setNumeroDaResidencia(Integer numeroDaResidencia) {
 		this.numeroDaResidencia = numeroDaResidencia;
 	}
 	public BigDecimal getRendimentoMensal() {

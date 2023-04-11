@@ -42,20 +42,18 @@ public class ClienteService {
 			Cliente LivroASerAlterado = this.clienteRepository.findById(cpf).get();
 			
 			cliente.setCPF(cpf);
-			
-								
 			if (cliente.getCEP() == null) {
 				cliente.setCEP(LivroASerAlterado.getCEP());
 			}
 			
-			if (cliente.getTel() == null) {
-				cliente.setTel(LivroASerAlterado.getTel());
+			if (cliente.getTelefone() == null) {
+				cliente.setTelefone(LivroASerAlterado.getTelefone());
 			}
 			
 			if (cliente.getRua() == null) {
 				cliente.setRua(LivroASerAlterado.getRua());
 			}
-			if (cliente.getNumeroDaResidencia() == 0) {
+			if (cliente.getNumeroDaResidencia() == null) {
 				cliente.setNumeroDaResidencia(LivroASerAlterado.getNumeroDaResidencia());
 			}
 			if(cliente.getRendimentoMensal() == null) {
@@ -64,7 +62,6 @@ public class ClienteService {
 			if(cliente.getNome() == null) {
 				cliente.setNome(LivroASerAlterado.getNome());
 			}
-			
 			
 			return this.clienteRepository.save(cliente);
 		}
@@ -84,7 +81,6 @@ public class ClienteService {
 		
 		throw new ClienteNaoEncontradoException(cpf);
 	}
-
 	
 
 }
