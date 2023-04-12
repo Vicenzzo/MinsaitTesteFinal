@@ -14,7 +14,7 @@ export class CadastrarAtualizarClientesComponent {
   clienteForm = new FormGroup({
     cpf: new FormControl(0, Validators.required),
     nome: new FormControl('', Validators.required),
-    telefone: new FormControl(0, Validators.required),
+    telefone: new FormControl(11923456789, Validators.required),
     cep: new FormControl('', Validators.required),
     rua: new FormControl('', Validators.required),
     numeroDaResidencia: new FormControl(0, Validators.required),
@@ -30,7 +30,7 @@ export class CadastrarAtualizarClientesComponent {
         this.clienteForm.setValue({
           cpf: cliente.cpf || 0,
           nome: cliente.nome || '',
-          telefone: cliente.telefone || 0,
+          telefone: cliente.telefone || 11923456789,
           cep: cliente.cep || '',
           rua: cliente.rua || '',
           numeroDaResidencia: cliente.numeroDaResidencia || 0,
