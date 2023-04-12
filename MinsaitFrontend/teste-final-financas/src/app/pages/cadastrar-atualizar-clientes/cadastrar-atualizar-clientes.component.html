@@ -1,21 +1,21 @@
-<h1 class="display-6 ms-4 mt-3">Cadastrar</h1>
+<h1 class="display-6 ms-4 mt-3">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</h1>
 <hr>
 <div class="container-fluid">
-  <form [formGroup]="clienteForm" (ngSubmit)="cadastrar()">
+  <form [formGroup]="clienteForm" (ngSubmit)="cadastrarOuEditar()">
     <div class="row">
-      <div class="col-3">
+      <div class="{{clienteCpf ? '' : 'col-3'}}">
         <div class="mb-3">
-          <label for="cpf" class="form-label">CPF</label>
-          <input type="number" class="form-control" id="cpf" formControlName="cpf">
+          <label for="cpf" class="form-label" >{{clienteCpf ? '' : 'CPF'}}</label>
+          <input type="{{clienteCpf ? 'hidden' : 'number'}}" class="form-control" id="cpf" formControlName="cpf">
         </div>
       </div>
-      <div class="col-6">
+      <div class="{{clienteCpf ? '' : 'col-6'}}">
         <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" formControlName="nome">
+          <label for="nome" class="form-label">{{clienteCpf ? '' : 'Nome'}}</label>
+          <input type="{{clienteCpf ? 'hidden' : 'text'}}" class="form-control" id="nome" formControlName="nome">
         </div>
       </div>
-      <div class="col-3">
+      <div class="{{clienteCpf ? 'col-12' : 'col-6'}}">
         <div class="mb-3">
           <label for="telefone" class="form-label">Telefone</label>
           <input type="number" class="form-control" id="telefone" formControlName="telefone">
@@ -46,6 +46,6 @@
         </div>
       </div>
     </div>
-    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">Cadastrar</button>
+    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</button>
   </form>
 </div>

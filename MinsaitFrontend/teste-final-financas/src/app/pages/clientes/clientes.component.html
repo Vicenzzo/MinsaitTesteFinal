@@ -25,8 +25,8 @@
         <td>{{cliente.numeroDaResidencia}}</td>
         <td>{{cliente.rendimentoMensal}}</td>
         <td>
-          <a class="btn btn-primary" routerLink="/clientes/editar/:cpf">Alterar</a>
-          <a type="button" class="btn btn-danger ms-1" routerLink="/clientes/deletar/">Excluir</a>
+          <a class="btn btn-primary" routerLink="/clientes/editar/{{cliente.cpf}}">Alterar</a>
+          <a type="button" class="btn btn-danger ms-1" routerLink="/clientes/deletar/{{cliente.cpf}}">Excluir</a>
         </td>
       </tr>
     </tbody>

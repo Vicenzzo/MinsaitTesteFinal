@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/cadastrar', component: CadastrarAtualizarClientesComponent},
   {path: 'clientes/editar/:cpf', component: CadastrarAtualizarClientesComponent},
+  {path: 'clientes/deletar/:cpf', component: ClientesComponent},
   {path: 'emprestimos', component: EmprestimosComponent}
 ];
 

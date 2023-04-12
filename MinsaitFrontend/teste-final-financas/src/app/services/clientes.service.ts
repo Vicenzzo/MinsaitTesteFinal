@@ -17,4 +17,13 @@ export class ClientesService {
   cadastrarCliente(cliente: ICliente){
     return this.http.post(`${this.api}/${this.endpoint}`, cliente);
   }
+  buscarClientePorCpf(cpf: number){
+    return this.http.get<ICliente>(`${this.api}/${this.endpoint}/${cpf}`);
+  }
+  atualizarCliente(cpf: number, cliente: ICliente){
+    return this.http.put(`${this.api}/${this.endpoint}/${cpf}`, cliente);
+  }
+  deletarCliente(cpf: number){
+    return this.http.delete(`${this.api}/${this.endpoint}/${cpf}`);
+  }
 }
