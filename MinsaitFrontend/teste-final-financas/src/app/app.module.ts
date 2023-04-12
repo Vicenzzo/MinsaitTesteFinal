@@ -11,6 +11,7 @@ import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component'
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
+import { CadastrarEmprestimosComponent } from './pages/cadastrar-emprestimos/cadastrar-emprestimos.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar
     HomeComponent,
     ClientesComponent,
     EmprestimosComponent,
-    CadastrarAtualizarClientesComponent
+    CadastrarAtualizarClientesComponent,
+    CadastrarEmprestimosComponent
   ],
   imports: [
     BrowserModule,
