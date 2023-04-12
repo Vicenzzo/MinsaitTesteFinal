@@ -1,0 +1,51 @@
+<h1 class="display-6 ms-4 mt-3">Cadastrar</h1>
+<hr>
+<div class="container-fluid">
+  <form [formGroup]="clienteForm" (ngSubmit)="cadastrar()">
+    <div class="row">
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="number" class="form-control" id="cpf" formControlName="cpf">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="number" class="form-control" id="telefone" formControlName="telefone">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" formControlName="cep">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="rua" class="form-label">Rua</label>
+          <input type="text" class="form-control" id="rua" formControlName="rua">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="numeroDaResidencia" class="form-label">Numero da residência</label>
+          <input type="number" class="form-control" id="numeroDaResidencia" formControlName="numeroDaResidencia">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="rendimentoMensal" class="form-label">Rendimento mensal</label>
+          <input type="number" class="form-control" id="rendimentoMensal" formControlName="rendimentoMensal">
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">Cadastrar</button>
+  </form>
+</div>

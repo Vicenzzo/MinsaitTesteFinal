@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
-import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
-import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
+
 
 public enum RelacionamentoE {
 	BRONZE() {
@@ -35,12 +34,12 @@ public enum RelacionamentoE {
 		public
         BigDecimal calcula(Emprestimo emprestimo, Integer quantidaEmprestimo) {
         	
-				if(quantidaEmprestimo < 2) {
+				if(quantidaEmprestimo <= 1) {
 					emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.2)).setScale(2, RoundingMode.HALF_UP));		
 				}else {
 					emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.3)).setScale(2, RoundingMode.HALF_UP));
-	
-				}				
+				}
+								
         	return emprestimo.getValorFinal();	
         	
         }  

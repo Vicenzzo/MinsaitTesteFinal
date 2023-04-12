@@ -29,7 +29,8 @@ Integer valorTotalEmprestimo;
 		if (this.clienteRepository.existsById(cpf)) {
 			
 			if(this.clientePodeSolicitarEmprestimo(cpf, emprestimo.getValorIncial().doubleValue())) {
-			emprestimo.setValorFinal(emprestimo.getRelacionamento().calcula(emprestimo, this.retornarTodosOsEmprestimosPorCliente(cpf).size()));
+				emprestimo.setCPFCliente(cpf);
+				emprestimo.setValorFinal(emprestimo.getRelacionamento().calcula(emprestimo, this.retornarTodosOsEmprestimosPorCliente(cpf).size()));
 				
 				return this.emprestimoRepository.save(emprestimo);
 			}
