@@ -28,7 +28,7 @@ Integer valorTotalEmprestimo;
 		
 		if (this.clienteRepository.existsById(cpf)) {
 			
-			if(this.clientePodeSolicitarEmprestimo(cpf, emprestimo.getValorIncial().doubleValue())) {
+			if(this.clientePodeSolicitarEmprestimo(cpf, emprestimo.getValorInicial().doubleValue())) {
 				emprestimo.setCPFCliente(cpf);
 				emprestimo.setValorFinal(emprestimo.getRelacionamento().calcula(emprestimo, this.retornarTodosOsEmprestimosPorCliente(cpf).size()));
 				
@@ -91,7 +91,7 @@ Integer valorTotalEmprestimo;
 		Double valorLimite = this.clienteRepository.getReferenceById(cpf).getRendimentoMensal().doubleValue() * 10;
 		Double valorEmprestimo = valor;
 		for (Emprestimo emprestimoAux : this.retornarTodosOsEmprestimosPorCliente(cpf)) {
-			valorEmprestimo += emprestimoAux.getValorIncial().doubleValue();
+			valorEmprestimo += emprestimoAux.getValorInicial().doubleValue();
 		}
 		if (valorEmprestimo <= valorLimite) {
 				return true;	

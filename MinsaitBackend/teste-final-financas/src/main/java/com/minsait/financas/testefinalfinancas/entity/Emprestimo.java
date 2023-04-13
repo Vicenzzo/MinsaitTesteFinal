@@ -16,7 +16,7 @@ public class Emprestimo{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long CPFCliente;
-	private BigDecimal valorIncial;
+	private BigDecimal valorInicial;
 	private BigDecimal valorFinal;
 	private RelacionamentoE relacionamento;
 	private Integer dataInicial;
@@ -28,8 +28,8 @@ public class Emprestimo{
 		
 	}
 
-	public Emprestimo(BigDecimal valorIncial, BigDecimal valorFinal, RelacionamentoE relacionamento,Long CPFCliente, Integer dataInicial, Integer dataFinal) {
-		this.valorIncial = valorIncial;
+	public Emprestimo(BigDecimal valorInicial, BigDecimal valorFinal, RelacionamentoE relacionamento,Long CPFCliente, Integer dataInicial, Integer dataFinal) {
+		this.valorInicial = valorInicial;
 		this.valorFinal = valorFinal;
 		this.relacionamento = relacionamento;
 		this.CPFCliente = CPFCliente;
@@ -44,12 +44,12 @@ public class Emprestimo{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public BigDecimal getValorIncial() {
-		return valorIncial;
+	public BigDecimal getValorInicial() {
+		return valorInicial;
 	}
 
-	public void setValorIncial(BigDecimal valorIncial) {
-		this.valorIncial = valorIncial;
+	public void setValorInicial(BigDecimal valorInicial) {
+		this.valorInicial = valorInicial;
 	}
 
 	public BigDecimal getValorFinal() {

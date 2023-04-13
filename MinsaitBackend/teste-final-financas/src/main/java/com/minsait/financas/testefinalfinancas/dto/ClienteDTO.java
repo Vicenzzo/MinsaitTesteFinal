@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
 
 public class ClienteDTO {
-	private Integer telefone;
+	private Long telefone;
 	private String cep;
 	private String rua;
 	private Integer numeroDaResidencia;
@@ -16,7 +16,7 @@ public class ClienteDTO {
 		
 	}
 	
-	public ClienteDTO(Integer telefone, String cep, String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
+	public ClienteDTO(Long telefone, String cep, String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
 		super();
 		this.telefone = telefone;
 		this.cep = cep;
@@ -33,10 +33,10 @@ public class ClienteDTO {
 		Cliente cliente = new Cliente(clienteDTO.getTelefone(), clienteDTO.getCep(), clienteDTO.getRua(), clienteDTO.getNumeroDaResidencia(), clienteDTO.getRendimentoMensal());
 		return cliente;
 	}
-	public Integer getTelefone() {
+	public Long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 	public String getCep() {

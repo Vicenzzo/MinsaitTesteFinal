@@ -1,1 +1,33 @@
-<p>cadastrar-emprestimos works!</p>
+<h1 class="display-6 ms-4 mt-3">Cadastrar Emprestimo</h1>
+<hr>
+<div class="container-fluid">
+  <form [formGroup]="emprestimoForm" (ngSubmit)="cadastrar()">
+    <div class="row">
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="valorInicial" class="form-label" >Valor Inicial</label>
+          <input type="number" class="form-control" id="valorInicial" formControlName="valorInicial">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="dataInicial" class="form-label">Data Inicial</label>
+          <input type="number" class="form-control" id="dataInicial" formControlName="dataInicial">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="dataFinal" class="form-label">Data Final</label>
+          <input type="number" class="form-control" id="dataFinal" formControlName="dataFinal">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="relacionamento" class="form-label">Relacionamento</label>
+          <input type="text" class="form-control" id="relacionamento" formControlName="relacionamento">
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!emprestimoForm.valid" class="btn btn-dark">Cadastrar</button>
+  </form>
+</div>

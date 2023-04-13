@@ -1,1 +1,33 @@
-<p>emprestimos works!</p>
+<h1 class="display-6 ms-4 mt-3">Emprestimos</h1>
+<hr>
+<div class="container">
+  <table class="table table-striped table-bordered mt-2">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cpf do cliente</th>
+        <th>Valor inicial</th>
+        <th>Valor final</th>
+        <th>Data inicial</th>
+        <th>Data final</th>
+        <th>Relacionamento</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emprestimo of emprestimos">
+        <th scope="row" >{{emprestimo.id}}</th>
+        <td>{{emprestimo.cpfcliente}}</td>
+        <td>{{emprestimo.valorInicial}}</td>
+        <td>{{emprestimo.valorFinal}}</td>
+        <td>{{emprestimo.dataInicial}}</td>
+        <td>{{emprestimo.dataFinal}}</td>
+        <td>{{emprestimo.relacionamento}}</td>
+        <td>
+          <a type="button" class="btn btn-danger ms-1  btn-sm" onsubmit="deletar()"  routerLink="/clientes/{{emprestimo.cpfcliente}}/emprestimos/deletar/{{emprestimo.id}}">Excluir</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

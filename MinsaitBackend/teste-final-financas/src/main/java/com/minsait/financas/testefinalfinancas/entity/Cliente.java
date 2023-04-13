@@ -16,7 +16,7 @@ public class Cliente{
 	
 	@NotEmpty(message = "Nome é obrigatório.")
 	private String nome;
-	private Integer telefone;
+	private Long telefone;
 	private String cep;
 	private String rua;
 	private Integer numeroDaResidencia;
@@ -26,7 +26,7 @@ public class Cliente{
 		
 	}
 	
-	public Cliente(String nome, Integer telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
+	public Cliente(String nome, Long telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
 		this.nome = nome;
 		this.telefone = telefone;
 		this.cep = cep;
@@ -35,7 +35,7 @@ public class Cliente{
 		this.rendimentoMensal = rendimentoMensal;
 	}
 
-	public Cliente(Integer telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
+	public Cliente(Long telefone, String cep,String rua, Integer numeroDaResidencia, BigDecimal rendimentoMensal) {
 		this.telefone = telefone;
 		this.cep = cep;
 		this.rua = rua;
@@ -58,10 +58,10 @@ public class Cliente{
 	public void setCPF(Long cpf) {
 		this.cpf = cpf;
 	}
-	public Integer getTelefone() {
+	public Long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 	public String getCEP() {

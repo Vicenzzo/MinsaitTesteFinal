@@ -12,7 +12,7 @@ public enum RelacionamentoE {
 		public
         BigDecimal calcula(Emprestimo emprestimo, Integer quantidaEmprestimo){
         	
-        	emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.8)).setScale(2, RoundingMode.HALF_UP));
+        	emprestimo.setValorFinal(emprestimo.getValorInicial().multiply(new BigDecimal(1.8)).setScale(2, RoundingMode.HALF_UP));
         	return emprestimo.getValorFinal();
         }
     },
@@ -21,10 +21,10 @@ public enum RelacionamentoE {
 		public
         BigDecimal calcula(Emprestimo emprestimo, Integer quantidaEmprestimo){
         	
-        	if(emprestimo.getValorIncial().compareTo(new BigDecimal(5000)) > 5000) {
-        		emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.4)).setScale(2, RoundingMode.HALF_UP));
+        	if(emprestimo.getValorInicial().compareTo(new BigDecimal(5000)) > 5000) {
+        		emprestimo.setValorFinal(emprestimo.getValorInicial().multiply(new BigDecimal(1.4)).setScale(2, RoundingMode.HALF_UP));
         	}
-        	emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.6)).setScale(2, RoundingMode.HALF_UP));
+        	emprestimo.setValorFinal(emprestimo.getValorInicial().multiply(new BigDecimal(1.6)).setScale(2, RoundingMode.HALF_UP));
         	return emprestimo.getValorFinal();	
         	
         }
@@ -35,9 +35,9 @@ public enum RelacionamentoE {
         BigDecimal calcula(Emprestimo emprestimo, Integer quantidaEmprestimo) {
         	
 				if(quantidaEmprestimo <= 1) {
-					emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.2)).setScale(2, RoundingMode.HALF_UP));		
+					emprestimo.setValorFinal(emprestimo.getValorInicial().multiply(new BigDecimal(1.2)).setScale(2, RoundingMode.HALF_UP));		
 				}else {
-					emprestimo.setValorFinal(emprestimo.getValorIncial().multiply(new BigDecimal(1.3)).setScale(2, RoundingMode.HALF_UP));
+					emprestimo.setValorFinal(emprestimo.getValorInicial().multiply(new BigDecimal(1.3)).setScale(2, RoundingMode.HALF_UP));
 				}
 								
         	return emprestimo.getValorFinal();	
