@@ -5,6 +5,7 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { EmprestimosComponent } from './pages/emprestimos/emprestimos.component';
 import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
 import { CadastrarEmprestimosComponent } from './pages/cadastrar-emprestimos/cadastrar-emprestimos.component';
+import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'clientes/deletar/:cpf', component: ClientesComponent},
   {path: 'clientes/:cpf/emprestimos', component: EmprestimosComponent},
   {path: 'clientes/:cpf/emprestimos/deletar/:id', component: EmprestimosComponent},
-  {path: 'clientes/:cpf/emprestimos/cadastrar', component: CadastrarEmprestimosComponent}
+  {path: 'clientes/:cpf/emprestimos/cadastrar', component: CadastrarEmprestimosComponent},
+  {path: 'quem-somos', component: QuemSomosComponent}
 ];
 
 @NgModule({

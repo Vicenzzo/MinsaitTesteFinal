@@ -4,10 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ClienteNaoEncontradoException extends Exception{
+public class IdEmprestimoNaoEncontradoException extends Exception{
 	private static final long serialVersionUID = 1L;
-	
-	public ClienteNaoEncontradoException(Long cpf) {
-		super(String.format("O CPF %s nao foi encontrado", cpf));
+	public IdEmprestimoNaoEncontradoException(Long id) {
+		super(String.format("o ID %s nao foi encontrado", id));
 	}
 }

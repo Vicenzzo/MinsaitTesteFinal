@@ -12,8 +12,10 @@ import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
 import { CadastrarEmprestimosComponent } from './pages/cadastrar-emprestimos/cadastrar-emprestimos.component';
-import { CpfPipe } from './pipe/cpf.pipe';
 import { FormsComponent } from './components/forms/forms.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
+
 
 
 @NgModule({
@@ -25,14 +27,16 @@ import { FormsComponent } from './components/forms/forms.component';
     EmprestimosComponent,
     CadastrarAtualizarClientesComponent,
     CadastrarEmprestimosComponent,
-    CpfPipe,
-    FormsComponent
+    FormsComponent,
+    QuemSomosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CurrencyMaskModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

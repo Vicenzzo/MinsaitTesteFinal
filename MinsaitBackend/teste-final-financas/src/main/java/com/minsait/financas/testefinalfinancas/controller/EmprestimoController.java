@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.entity.Emprestimo;
+import com.minsait.financas.testefinalfinancas.exception.ClienteNaoCorrespondenteException;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
-import com.minsait.financas.testefinalfinancas.exception.EmprestimoNaoCadastradoException;
+import com.minsait.financas.testefinalfinancas.exception.IdEmprestimoNaoEncontradoException;
+import com.minsait.financas.testefinalfinancas.exception.LimiteEmprestimoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
 import com.minsait.financas.testefinalfinancas.service.EmprestimoService;
 import com.minsait.financas.testefinalfinancas.service.MensagemDeSucesso;
@@ -39,7 +41,7 @@ public class EmprestimoController{
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Emprestimo cadastrarEmprestimoCliente(@PathVariable Long cpf, @Valid @RequestBody Emprestimo empresimo) throws ClienteNaoEncontradoException, EmprestimoNaoCadastradoException {
+	public Emprestimo cadastrarEmprestimoCliente(@PathVariable Long cpf, @Valid @RequestBody Emprestimo empresimo) throws ClienteNaoEncontradoException, LimiteEmprestimoException {
 		Emprestimo empretimoSalvo = this.emprestimoService.cadastrarEmprestimo(empresimo, cpf);
 		return empretimoSalvo;
 	}
@@ -51,12 +53,12 @@ public class EmprestimoController{
 	}
 	@GetMapping("/{id}")
 	
-	public Emprestimo retornarEmprestimoPorId(@PathVariable Long cpf, @PathVariable Long id) throws ClienteNaoEncontradoException {
+	public Emprestimo retornarEmprestimoPorId(@PathVariable Long cpf, @PathVariable Long id) throws ClienteNaoEncontradoException, IdEmprestimoNaoEncontradoException, ClienteNaoCorrespondenteException {
 		return this.emprestimoService.retornarEmprestimoPorId(cpf, id);
 	}
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
-	public MensagemDeSucesso deletarEmprestimoPorId(@PathVariable Long id, @PathVariable Long cpf) throws ClienteNaoEncontradoException {
+	public MensagemDeSucesso deletarEmprestimoPorId(@PathVariable Long id, @PathVariable Long cpf) throws ClienteNaoEncontradoException,  IdEmprestimoNaoEncontradoException{
 		return this.emprestimoService.deletarEmprestimo(id, cpf);
 	}
 	

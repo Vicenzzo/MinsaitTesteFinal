@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
+import com.minsait.financas.testefinalfinancas.exception.CPFCadastradoException;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.repository.ClienteRepository;
 @Service
@@ -20,7 +21,10 @@ public class ClienteService {
 		this.clienteRepository = clienteRepository;
 	}
 	
-	public Cliente cadastrarCliente(Cliente cliente) {
+	public Cliente cadastrarCliente(Cliente cliente) throws CPFCadastradoException {
+		if(this.clienteRepository.existsById(cliente.getCPF())) {
+			throw new CPFCadastradoException(cliente.getCPF());
+		}
 		Cliente clienteRetorno = this.clienteRepository.save(cliente);
 		return clienteRetorno;
 	}

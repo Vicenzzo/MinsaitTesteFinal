@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.financas.testefinalfinancas.dto.ClienteDTO;
 import com.minsait.financas.testefinalfinancas.entity.Cliente;
+import com.minsait.financas.testefinalfinancas.exception.CPFCadastradoException;
 import com.minsait.financas.testefinalfinancas.exception.ClienteNaoEncontradoException;
 import com.minsait.financas.testefinalfinancas.service.ClienteService;
 import com.minsait.financas.testefinalfinancas.service.MensagemDeSucesso;
@@ -35,7 +36,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente cadastrarCliente(@Valid @RequestBody Cliente cliente) {
+	public Cliente cadastrarCliente(@Valid @RequestBody Cliente cliente) throws CPFCadastradoException {
 		Cliente clienteSalvo = this.clienteService.cadastrarCliente(cliente);
 		return clienteSalvo;
 	}

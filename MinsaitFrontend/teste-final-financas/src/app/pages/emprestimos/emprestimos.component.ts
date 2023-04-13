@@ -31,4 +31,8 @@ export class EmprestimosComponent {
       console.error(error);
     })
   }
+  ConvertStringToNumber(input: number) {
+    var numeric = String(input);
+    return numeric;
+}
 }

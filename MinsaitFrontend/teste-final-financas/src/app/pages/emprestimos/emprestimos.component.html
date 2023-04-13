@@ -1,6 +1,8 @@
-<h1 class="display-6 ms-4 mt-3">Emprestimos</h1>
-<hr>
+
 <div class="container">
+  <h1 class="display-6 mt-3">Emprestimos</h1>
+  <hr>
+  <a routerLink="/clientes" class="btn btn-dark">Voltar</a>
   <table class="table table-striped table-bordered mt-2">
     <thead>
       <tr>
@@ -16,12 +18,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let emprestimo of emprestimos">
+        
         <th scope="row" >{{emprestimo.id}}</th>
         <td>{{emprestimo.cpfcliente}}</td>
         <td>{{emprestimo.valorInicial | currency: 'BRL'}}</td>
         <td>{{emprestimo.valorFinal | currency: 'BRL'}}</td>
-        <td>{{emprestimo.dataInicial}}</td>
-        <td>{{emprestimo.dataFinal}}</td>
+        <td>{{emprestimo.dataInicial | date:'dd/MM/YYYY'}}</td>
+        <td>{{emprestimo.dataFinal | date:'dd/MM/YYYY'}}</td>
         <td>{{emprestimo.relacionamento}}</td>
         <td>
           <a type="button" class="btn btn-danger ms-1  btn-sm" onsubmit="deletar()"  routerLink="/clientes/{{emprestimo.cpfcliente}}/emprestimos/deletar/{{emprestimo.id}}">Excluir</a>
@@ -29,5 +32,6 @@
       </tr>
     </tbody>
   </table>
+
 </div>
 

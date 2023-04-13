@@ -1,7 +1,7 @@
-<h1 class="display-6 ms-4 mt-3">Clientes</h1>
-<hr>
-<a routerLink="/clientes/cadastrar" class="btn btn-dark ms-4">Novo</a>
 <div class="container">
+  <h1 class="display-6 mt-3">Clientes</h1>
+<hr>
+  <a routerLink="/clientes/cadastrar" class="btn btn-primary">Novo</a>
   <table class="table table-striped table-bordered mt-2">
     <thead>
       <tr>
@@ -30,10 +30,10 @@
               Ações do cliente
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="/clientes/editar/{{cliente.cpf}}">Alterar</a></li>
-              <li><a class="dropdown-item" onsubmit="deletar()" routerLink="/clientes/deletar/{{cliente.cpf}}">Excluir</a></li>
-              <li><a class="dropdown-item" routerLink="/clientes/{{cliente.cpf}}/emprestimos/cadastrar">Cadastrar Emprestimo</a></li>
-              <li><a class="dropdown-item" routerLink="/clientes/{{cliente.cpf}}/emprestimos">Visualizar Emprestimos</a></li>
+              <li><a class="dropdown-item" routerLink="/clientes/editar/{{cliente.cpf}}">Manutenção cadastral</a></li>
+              <li><a class="dropdown-item" onsubmit="deletar()" routerLink="/clientes/deletar/{{cliente.cpf}}">Excluir cliente</a></li>
+              <li><a class="dropdown-item" routerLink="/clientes/{{cliente.cpf}}/emprestimos/cadastrar">Cadastrar emprestimo</a></li>
+              <li><a class="dropdown-item" routerLink="/clientes/{{cliente.cpf}}/emprestimos">Visualizar emprestimos</a></li>
             </ul>
           </div>
         </td>

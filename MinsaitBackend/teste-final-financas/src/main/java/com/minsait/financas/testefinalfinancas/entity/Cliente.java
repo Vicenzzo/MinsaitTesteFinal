@@ -3,7 +3,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 
 @Entity
@@ -11,15 +14,25 @@ import javax.validation.constraints.NotEmpty;
 public class Cliente{
 	
 	@Id
-	
+	@NotNull(message = "O CPF é obrigatório")
 	private Long cpf; 
 	
-	@NotEmpty(message = "Nome é obrigatório.")
+	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
+	
+	@NotNull(message="O telefone é obrigatório")
 	private Long telefone;
+	
+	@NotNull(message="O CEP é obrigatório")
 	private String cep;
+	
+	@NotBlank(message="O endereço é obrigatório")
 	private String rua;
+	
+	@NotNull(message="O numero da residencia é obrigatorio")
 	private Integer numeroDaResidencia;
+	
+	@NotNull(message="O rendimento mensal é obrigatório")
 	private BigDecimal rendimentoMensal;
 
 	public Cliente() {

@@ -1,33 +1,25 @@
-<h1 class="display-6 ms-4 mt-3">Cadastrar Emprestimo</h1>
+
+<div class="container">
+  <h1 class="display-6 mt-3">Cadastrar Emprestimo</h1>
 <hr>
-<div class="container-fluid">
   <form [formGroup]="emprestimoForm" (ngSubmit)="cadastrar()">
-    <div class="row">
-      <div class="col-3">
+    <div class="d-flex">
+      <app-forms type="number" nomeLabel="Valor Inicial" idInput="valorInicial" [controle]="$any(emprestimoForm.get('valorInicial'))"></app-forms>
+      <app-forms type="date" nomeLabel="Data Inicial" idInput="dataInicial" [controle]="$any(emprestimoForm.get('dataInicial'))"></app-forms>
+      <app-forms type="date" nomeLabel="Data Final" idInput="dataFinal" [controle]="$any(emprestimoForm.get('dataFinal'))"></app-forms>
+      <div class="col-2 ps-2" style="margin-top: 32px;">
         <div class="mb-3">
-          <label for="valorInicial" class="form-label" >Valor Inicial</label>
-          <input type="number" class="form-control" id="valorInicial" formControlName="valorInicial">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="dataInicial" class="form-label">Data Inicial</label>
-          <input type="number" class="form-control" id="dataInicial" formControlName="dataInicial">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="dataFinal" class="form-label">Data Final</label>
-          <input type="number" class="form-control" id="dataFinal" formControlName="dataFinal">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="relacionamento" class="form-label">Relacionamento</label>
-          <input type="text" class="form-control" id="relacionamento" formControlName="relacionamento">
+          <select class="form-select mb-3" (change)="changeRelacionamento($event)" formControlName="relacionamento">
+            <option value="">Relacionamento</option>
+            <option *ngFor="let relacionamento of Relacionamento" [ngValue]="relacionamento">
+              {{ relacionamento }}
+            </option>
+        </select>
         </div>
       </div>
     </div>
-    <button type="submit" [disabled]="!emprestimoForm.valid" class="btn btn-dark">Cadastrar</button>
+    <button type="submit" [disabled]="!emprestimoForm.valid" class="btn btn-primary ms-2">Cadastrar</button>
+    <a routerLink="/clientes" class="btn btn-dark ms-2">Voltar</a>
   </form>
+
 </div>

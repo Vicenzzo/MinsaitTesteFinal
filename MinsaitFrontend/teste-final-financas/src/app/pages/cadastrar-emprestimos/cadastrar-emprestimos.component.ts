@@ -10,14 +10,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cadastrar-emprestimos.component.css']
 })
 export class CadastrarEmprestimosComponent {
+  Relacionamento: any = ['OURO', 'PRATA', 'BRONZE'];
   emprestimoForm = new FormGroup({
     valorInicial: new FormControl(0, Validators.required),
     relacionamento: new FormControl('', Validators.required),
-    dataInicial: new FormControl(0, Validators.required),
-    dataFinal: new FormControl(0, Validators.required)
+    dataInicial: new FormControl('', Validators.required),
+    dataFinal: new FormControl('', Validators.required)
   })
   constructor(private emprestimosService: EmprestimosService, private route: ActivatedRoute, private router: Router){}
   emprestimoCpf = 0;
+
+  changeRelacionamento(e: any) {
+    this.relacionamento?.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+  // Access formcontrols getter
+  get relacionamento() {
+    return this.emprestimoForm.get('relacionamento');
+  }
 
 
   cadastrar(){

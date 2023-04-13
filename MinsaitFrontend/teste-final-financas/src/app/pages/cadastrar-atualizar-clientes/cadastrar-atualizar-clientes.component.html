@@ -1,6 +1,7 @@
-<h1 class="display-6 ms-4 mt-3">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</h1>
+
+<div class="container">
+  <h1 class="display-6 mt-3">{{clienteCpf ? 'Manutenção Cadastral' : 'Cadastrar Cliente'}}</h1>
 <hr>
-<div class="container-fluid">
   <form [formGroup]="clienteForm" (ngSubmit)="cadastrarOuEditar()">
     <div class="d-flex flex-wrap">
       <app-forms type="number" nomeLabel="CPF" idInput="cpf" [controle]="$any(clienteForm.get('cpf'))" [validar]="clienteCpf ? true : false"></app-forms>
@@ -11,6 +12,8 @@
      <app-forms  type="number" nomeLabel="Numero da residência" idInput="numeroDaResidencia" [controle]="$any(clienteForm.get('numeroDaResidencia'))"></app-forms>
      <app-forms  type="number" nomeLabel="Rendimento mensal" idInput="rendimentoMensal" [controle]="$any(clienteForm.get('rendimentoMensal'))"></app-forms>
     </div>
-    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</button>
+    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-primary ms-2">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</button>
+    <a routerLink="/clientes" class="btn btn-dark ms-2">Voltar</a>
+
   </form>
 </div>

@@ -3,8 +3,8 @@ export interface IEmprestimo {
   valorInicial? : number,
   valorFinal? : number,
   relacionamento? : string,
-  dataInicial? : number,
-  dataFinal? : number,
+  dataInicial? : string,
+  dataFinal? : string,
   cpfcliente? : number
 
 }
