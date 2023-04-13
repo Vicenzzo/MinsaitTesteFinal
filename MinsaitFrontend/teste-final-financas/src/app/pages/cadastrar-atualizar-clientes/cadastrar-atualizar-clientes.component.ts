@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cadastrar-atualizar-clientes.component.css']
 })
 export class CadastrarAtualizarClientesComponent {
+
+  constructor(private clienteService: ClientesService, private route: ActivatedRoute, private router: Router){}
+  clienteCpf = 0;
   clienteForm = new FormGroup({
     cpf: new FormControl(0, Validators.required),
     nome: new FormControl('', Validators.required),
@@ -20,10 +23,8 @@ export class CadastrarAtualizarClientesComponent {
     numeroDaResidencia: new FormControl(0, Validators.required),
     rendimentoMensal: new FormControl(0, Validators.required)
   })
-  constructor(private clienteService: ClientesService, private route: ActivatedRoute, private router: Router){}
-  clienteCpf = 0;
-
   ngOnInit(){
+
     this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     if(this.clienteCpf){
       this.clienteService.buscarClientePorCpf(this.clienteCpf).subscribe((cliente: ICliente) => {

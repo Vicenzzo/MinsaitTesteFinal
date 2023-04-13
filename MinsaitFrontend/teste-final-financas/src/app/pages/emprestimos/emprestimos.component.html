@@ -18,8 +18,8 @@
       <tr *ngFor="let emprestimo of emprestimos">
         <th scope="row" >{{emprestimo.id}}</th>
         <td>{{emprestimo.cpfcliente}}</td>
-        <td>{{emprestimo.valorInicial}}</td>
-        <td>{{emprestimo.valorFinal}}</td>
+        <td>{{emprestimo.valorInicial | currency: 'BRL'}}</td>
+        <td>{{emprestimo.valorFinal | currency: 'BRL'}}</td>
         <td>{{emprestimo.dataInicial}}</td>
         <td>{{emprestimo.dataFinal}}</td>
         <td>{{emprestimo.relacionamento}}</td>

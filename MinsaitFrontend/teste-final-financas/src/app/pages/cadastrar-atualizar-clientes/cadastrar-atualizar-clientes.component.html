@@ -2,49 +2,14 @@
 <hr>
 <div class="container-fluid">
   <form [formGroup]="clienteForm" (ngSubmit)="cadastrarOuEditar()">
-    <div class="row">
-      <div class="{{clienteCpf ? '' : 'col-3'}}">
-        <div class="mb-3">
-          <label for="cpf" class="form-label" >{{clienteCpf ? '' : 'CPF'}}</label>
-          <input type="{{clienteCpf ? 'hidden' : 'number'}}" class="form-control" id="cpf" formControlName="cpf">
-        </div>
-      </div>
-      <div class="{{clienteCpf ? '' : 'col-6'}}">
-        <div class="mb-3">
-          <label for="nome" class="form-label">{{clienteCpf ? '' : 'Nome'}}</label>
-          <input type="{{clienteCpf ? 'hidden' : 'text'}}" class="form-control" id="nome" formControlName="nome">
-        </div>
-      </div>
-      <div class="{{clienteCpf ? 'col-12' : 'col-6'}}">
-        <div class="mb-3">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input type="number" class="form-control" id="telefone" formControlName="telefone">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="cep" class="form-label">CEP</label>
-          <input type="text" class="form-control" id="cep" formControlName="cep">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="rua" class="form-label">Rua</label>
-          <input type="text" class="form-control" id="rua" formControlName="rua">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="numeroDaResidencia" class="form-label">Numero da residência</label>
-          <input type="number" class="form-control" id="numeroDaResidencia" formControlName="numeroDaResidencia">
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="rendimentoMensal" class="form-label">Rendimento mensal</label>
-          <input type="number" class="form-control" id="rendimentoMensal" formControlName="rendimentoMensal">
-        </div>
-      </div>
+    <div class="d-flex flex-wrap">
+      <app-forms type="number" nomeLabel="CPF" idInput="cpf" [controle]="$any(clienteForm.get('cpf'))" [validar]="clienteCpf ? true : false"></app-forms>
+      <app-forms nomeLabel="Nome" idInput="nome" [controle]="$any(clienteForm.get('nome'))" [validar]="clienteCpf ? true : false"></app-forms>
+      <app-forms type="number" nomeLabel="Telefone" idInput="telefone"  [controle]="$any(clienteForm.get('telefone'))"></app-forms>
+     <app-forms [controle]="$any(clienteForm.get('cep'))"></app-forms>
+     <app-forms  nomeLabel="Rua" idInput="rua" [controle]="$any(clienteForm.get('rua'))"></app-forms>
+     <app-forms  type="number" nomeLabel="Numero da residência" idInput="numeroDaResidencia" [controle]="$any(clienteForm.get('numeroDaResidencia'))"></app-forms>
+     <app-forms  type="number" nomeLabel="Rendimento mensal" idInput="rendimentoMensal" [controle]="$any(clienteForm.get('rendimentoMensal'))"></app-forms>
     </div>
     <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">{{clienteCpf ? 'Editar' : 'Cadastrar'}}</button>
   </form>

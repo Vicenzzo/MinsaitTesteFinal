@@ -12,6 +12,9 @@ import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
 import { CadastrarEmprestimosComponent } from './pages/cadastrar-emprestimos/cadastrar-emprestimos.component';
+import { CpfPipe } from './pipe/cpf.pipe';
+import { FormsComponent } from './components/forms/forms.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { CadastrarEmprestimosComponent } from './pages/cadastrar-emprestimos/cad
     ClientesComponent,
     EmprestimosComponent,
     CadastrarAtualizarClientesComponent,
-    CadastrarEmprestimosComponent
+    CadastrarEmprestimosComponent,
+    CpfPipe,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
